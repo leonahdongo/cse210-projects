@@ -111,6 +111,63 @@ namespace Scripture
         }
     
     }
-    
+class Word
+    {
+        private string hiddenWord;
+        private bool isHidden;
+
+        public Word(string wordParam)
+        {
+            HiddenWord = "";
+            WordVal = wordParam;
+            foreach (char x in WordVal)
+            {
+                HiddenWord += "_";
+            }
+        }
+
+        public Word(string wordParam, bool isHiddenParam)
+        {
+            HiddenWord = "";
+            WordVal = wordParam;
+            IsHidden = isHiddenParam;
+
+            foreach (char x in WordVal)
+            {
+                HiddenWord += "_";
+            }
+        }
+
+        private string WordVal { get; set; }
+
+        public string HiddenWord { get => hiddenWord; private set => hiddenWord = value; }
+        public bool IsHidden { get => isHidden; private set => isHidden = value; }
+
+        public string ShowWord()
+        {
+            if (IsHidden == true)
+            {
+                return HiddenWord;
+            }
+            else
+            {
+                return WordVal;
+            }
+        }
+
+        public void SetHidden(bool isHiddenParam)
+        {
+            IsHidden = isHiddenParam;
+            if (IsHidden)
+            {
+                for (int i = 0; i < HiddenWord.Length; i++)
+                {
+                    HiddenWord = HiddenWord.Remove(i, 1).Insert(i, "_");
+                }
+            }
+        }
+    }
+}
+}   
 
     
