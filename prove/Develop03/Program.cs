@@ -2,37 +2,13 @@ using System;
 using System.Collections.Generic;
 
 namespace Namespace
-class Program
 {
-    static class Program
-    static void Main(string[] args)
-    {
-        private static void Main(string[] args)
-        {
-            Console.WriteLine("Hello Develop05 World!");
-        }
-        Console.WriteLine("Hello World!");
-    }
-}
-
-namespace Scripture
-{
-    static class HelloWorld
+    static class World
     {
         static void Main()
         {
-            ProgramManager manager = new();
-            ProgramManager.Run();
-        }
-    }
-
-    internal static class ProgramManager
-    {
-        public static void Run()
-        {
-            Scripture scripture;
-            Reference reference = new("Proverbs", "3", "5", "6");
-
+             Scripture scripture;
+            Reference reference = new Reference("Proverbs", "3", "5", "6");
             Random random = new();
             int randomNumber;
 
@@ -86,31 +62,45 @@ namespace Scripture
         }
     }
 
-    class Reference
-    {
-        private string book;
-        private readonly string chapter;
-        private string verse;
-        private string v;
-
-        public Reference(string bookParam, string chapterParam, string verseParam)
+     class Reference
         {
-            book = bookParam;
-            chapter = chapterParam;
-            verse = verseParam;
-        }
+            private string chapterNumber;
 
-        public Reference(string bookParam, string chapterParam, string verseParam, string v) : this(bookParam, chapterParam, verseParam)
-        {
-            this.v = v;
-        }
+            public Reference(string bookNameParam, string chapterNumberParam, string verseNumberParam)
+            {
+                BookName = bookNameParam;
+                ChapterNumber = chapterNumberParam;
+                VerseNumber = verseNumberParam;
+                EndVerseNumber = "X";
+            }
 
-        public void PrintFullReference()
-        {
-            Console.WriteLine($"{book} {chapter}:{verse}");
+            public Reference(string bookNameParam, string chapterNumberParam, string verseNumberParam, string endVerseNumberParam)
+            {
+                BookName = bookNameParam;
+                ChapterNumber = chapterNumberParam;
+                VerseNumber = verseNumberParam;
+                EndVerseNumber = endVerseNumberParam;
+            }
+
+            public string BookName { get; set; }
+            public string ChapterNumber { get => chapterNumber; set => chapterNumber = value; }
+            public string VerseNumber { get; set; }
+            public string EndVerseNumber { get; set; }
+            public string PrintFullReference1 { get; set; } = " ";
+
+            public void PrintFullReference()
+            {
+                if (EndVerseNumber == "X")
+                {
+                    Console.Write(BookName + " " + ChapterNumber + ":" + VerseNumber + " ");
+                }
+                else
+                {
+                    Console.Write(BookName + " " + ChapterNumber + ":" + VerseNumber + "-" + EndVerseNumber + " ");
+                }
+
+            }
         }
-    
-    }
 class Word
     {
         private string hiddenWord;
@@ -168,6 +158,6 @@ class Word
         }
     }
 }
-}   
+  
 
     
